@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoleGuard | Role Based Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <section id="loginPage" class="login-page">
+        <div class="login-card">
+            <div class="brand">
+                <div class="brand-icon">RG</div>
+                <div>
+                    <h1>RoleGuard</h1>
+                    <p>Role-Based Access Control</p>
+                </div>
+            </div>
+
+            <h2>Welcome back</h2>
+            <p class="subtitle">Enter your username and choose your access level.</p>
+
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="e.g. Gautam" autocomplete="off">
+
+            <div class="role-buttons">
+                <button class="role-btn admin" onclick="login('Admin')">
+                    <span>⚡</span>
+                    <div>
+                        <strong>Login as Admin</strong>
+                        <small>Full access</small>
+                    </div>
+                </button>
+
+                <button class="role-btn viewer" onclick="login('Viewer')">
+                    <span>◉</span>
+                    <div>
+                        <strong>Login as Viewer</strong>
+                        <small>Read-only access</small>
+                    </div>
+                </button>
+            </div>
+
+            <p id="error" class="error"></p>
+            <div class="demo-note">Demo project • No database required</div>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboardPage" class="dashboard hidden">
+        <header class="navbar">
+            <div class="nav-brand">
+                <div class="brand-icon small">RG</div>
+                <span>RoleGuard</span>
+            </div>
+
+            <div class="user-area">
+                <div class="avatar" id="avatar">G</div>
+                <div class="user-info">
+                    <strong id="navUsername">User</strong>
+                    <span id="navRole">Viewer</span>
+                </div>
+                <button class="logout" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="welcome-card">
+                <div>
+                    <p class="eyebrow">ACCESS GRANTED</p>
+                    <h1 id="welcome">Welcome, User!</h1>
+                    <p id="welcomeText">You are signed in successfully.</p>
+                </div>
+                <div class="role-badge" id="roleBadge">VIEWER</div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>Posts</h2>
+                    <p>Manage and view application content.</p>
+                </div>
+                <span class="count">3 Posts</span>
+            </div>
+
+            <div class="posts">
+                <article class="post">
+                    <div class="post-top">
+                        <span class="tag">Technology</span>
+                        <span>Today</span>
+                    </div>
+                    <h3>Understanding Role-Based Access</h3>
+                    <p>Role-based access control gives different users different permissions according to their assigned role.</p>
+                    <div class="post-bottom">
+                        <span>Admin & Viewer</span>
+                        <button class="delete-post hidden" onclick="deletePost(this)">Delete Post</button>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-top">
+                        <span class="tag">Security</span>
+                        <span>Yesterday</span>
+                    </div>
+                    <h3>Authentication vs Authorization</h3>
+                    <p>Authentication verifies identity, while authorization decides what an authenticated user can access.</p>
+                    <div class="post-bottom">
+                        <span>Admin & Viewer</span>
+                        <button class="delete-post hidden" onclick="deletePost(this)">Delete Post</button>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-top">
+                        <span class="tag">Web Development</span>
+                        <span>2 days ago</span>
+                    </div>
+                    <h3>Secure User Access</h3>
+                    <p>A well-designed access system helps protect resources and keeps unauthorized users from performing restricted actions.</p>
+                    <div class="post-bottom">
+                        <span>Admin & Viewer</span>
+                        <button class="delete-post hidden" onclick="deletePost(this)">Delete Post</button>
+                    </div>
+                </article>
+            </div>
+
+            <div id="viewerNotice" class="viewer-notice hidden">
+                <span class="notice-icon">✓</span>
+                <div>
+                    <strong>Read-only access</strong>
+                    <p>You can view posts, but administrative actions are disabled for your role.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>RoleGuard • Role-Based Login Demonstration</footer>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
